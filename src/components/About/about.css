@@ -14,6 +14,15 @@
 	gap: 4.4rem;
 }
 
+@media screen and (max-width: 768px) {
+	.about__img {
+		width: 100%;
+		height: auto;
+		max-width: 29.5rem;
+		object-fit: contain; /* Optional for better image scaling */
+	}
+}
+
 /* .about__img {
 	background-color: #0d0045;
 	-webkit-mask-image: radial-gradient(ellipse, #000 53%, #0000 68%);
