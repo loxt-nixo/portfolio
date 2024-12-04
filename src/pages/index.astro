@@ -1,23 +1,43 @@
 ---
 import About from '../components/About/About.astro';
-import BlogHome from '../components/BlogHome.astro';
 import { mainMenu } from '../components/data/menuData';
 import Footer from '../components/Footer/Footer.astro';
 import Header from '../components/header/Header.astro';
 import Hero from '../components/hero/Hero.astro';
-import Portfolio from '../components/Portfolio.astro';
 import Skills from '../components/skills/Skills.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Jhon Doe | Fullstack Developer">
+<Layout title="@">
+	<script>
+		const titleBase = "@";
+		const titleText = "arnsfh | arnsfh.xyz";
+		let titleIndex = 0;
+		let isForward = true;
+  
+		function updateTitle() {
+		  if (isForward) {
+			titleIndex = titleIndex < titleText.length ? titleIndex + 1 : titleIndex;
+		  } else {
+			titleIndex = titleIndex > 0 ? titleIndex - 1 : titleIndex;
+		  }
+  
+		  document.title = `${titleBase}${titleText.substring(0, titleIndex)}`;
+  
+		  if (titleIndex === titleText.length && isForward) {
+			isForward = false;
+		  } else if (titleIndex === 0 && !isForward) {
+			isForward = true;
+		  }
+		}
+  
+		setInterval(updateTitle, 200);
+	  </script>
 	<Header origin={mainMenu} />
 	<main class="self-center w-full">
 		<Hero />
 		<About />
 		<Skills />
-		<Portfolio />
-		<BlogHome />
 	</main>
 	<Footer/>
 </Layout>
